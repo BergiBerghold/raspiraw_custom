@@ -40,15 +40,16 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 // clang-format off
 // We want to preserve 1 register per line.
 
-struct sensor_regs imx219_8MPix[] = {
+struct sensor_regs imx219_8MPix[] =
+{
     // 3280x2464@15 FPS
     {0x0100, 0x00},  // 0=OFF, 1=Stream, 2=MAX
-    {0x30EB, 0x05},
+    {0x30EB, 0x05},  // *Start* - Sequence for accessing Manufacturer Specific Registers
     {0x30EB, 0x0C},
     {0x300A, 0xFF},
     {0x300B, 0xFF},
     {0x30EB, 0x05},
-    {0x30EB, 0x09},
+    {0x30EB, 0x09},  // *End* - Sequence for accessing Manufacturer Specific Registers
     {0x0114, 0x01},  // CSI MIPI Lanes [1:0]  (0x01=2, 0x03=4)
     {0x0128, 0x00},  // DPHY_CNTRL
     {0x012A, 0x18},  // EXCK_FREQ [15:8]
@@ -62,21 +63,21 @@ struct sensor_regs imx219_8MPix[] = {
     {0x0161, 0xC8},  // Frame Length [7:0]
     {0x0162, 0x0D},  // Line Length [15:8]
     {0x0163, 0x78},  // Line Length [7:0]
-    {0x0164, 0x00},
-    {0x0165, 0x00},
-    {0x0166, 0x0C},
-    {0x0167, 0xCF},
-    {0x0168, 0x00},
-    {0x0169, 0x00},
-    {0x016A, 0x09},
-    {0x016B, 0x9F},
-    {0x016C, 0x0C},
-    {0x016D, 0xD0},
-    {0x016E, 0x09},
-    {0x016F, 0xA0},
+    {0x0164, 0x00},  // X-address of the top left corner of the visible pixel data
+    {0x0165, 0x00},  // X-address of the top left corner of the visible pixel data
+    {0x0166, 0x0C},  // X-address of the bottom right corner of the visible pixel data
+    {0x0167, 0xCF},  // X-address of the bottom right corner of the visible pixel data
+    {0x0168, 0x00},  // Y-address of the top left corner of the visible pixel data
+    {0x0169, 0x00},  // Y-address of the top left corner of the visible pixel data
+    {0x016A, 0x09},  // X-address of the bottom right corner of the visible pixel data
+    {0x016B, 0x9F},  // X-address of the bottom right corner of the visible pixel data
+    {0x016C, 0x0C},  // output image size (X-direction) Width of image data output from the sensor module
+    {0x016D, 0xD0},  // output image size (X-direction) Width of image data output from the sensor module
+    {0x016E, 0x09},  // output image size (Y-direction) Height of image data output from the sensor module
+    {0x016F, 0xA0},  // output image size (Y-direction) Height of image data output from the sensor module
     {0x0170, 0x01},  // X_ODD_INC [2:0]
     {0x0171, 0x01},  // Y_ODD_INC [2:0]
-    {0x0172, 0x03},
+    {0x0172, 0x03},  // Image_orientation
     {0x0174, 0x00},  // Binning Mode H_A
     {0x0175, 0x00},  // Binning Mode V_A
     {0x018C, 0x0A},  // CSI Data Format [15:8]
@@ -102,7 +103,7 @@ struct sensor_regs imx219_8MPix[] = {
     {0x478F, 0x10},  // CIS Tuning ?
     {0x4797, 0x0E},  // CIS Tuning ?
     {0x479B, 0x0E},  // CIS Tuning ?
-    {0x0100, 0x01},
+    {0x0100, 0x01},  // Mode Select: Streaming
 };
 
 // Register setting provided on
@@ -581,8 +582,8 @@ struct mode_def imx219_modes[] = {
 	    .native_bit_depth = 10,
 	    .image_id = 0x2B,
 	    .data_lanes = 2,
-	    .min_vts = 2504,
-	    .line_time_ns = 18904,
+	    .min_vts = 2504,    // todo: Try modifying this
+	    .line_time_ns = 18904,      // todo: and this
 	    .timing = { 0, 0, 0, 0, 0 },
 	    .term = { 0, 0 },
 	    .black_level = 66,
