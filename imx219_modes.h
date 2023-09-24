@@ -103,7 +103,6 @@ struct sensor_regs imx219_8MPix[] = {
     {0x4797, 0x0E},  // CIS Tuning ?
     {0x479B, 0x0E},  // CIS Tuning ?
     {0x0100, 0x01},
-    {0x0155, 0x00}   // COMP_ENABLE_A
 };
 
 // Register setting provided on
