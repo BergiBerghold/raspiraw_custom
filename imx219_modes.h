@@ -101,6 +101,7 @@ struct sensor_regs imx219_8MPix[] =
     {0x4713, 0x30},  // CIS Tuning ?
     {0x478B, 0x10},  // CIS Tuning ?
     {0x478F, 0x10},  // CIS Tuning ?
+    {0x4793, 0x10},
     {0x4797, 0x0E},  // CIS Tuning ?
     {0x479B, 0x0E},  // CIS Tuning ?
     {0x0100, 0x01},  // Mode Select: Streaming
@@ -586,7 +587,7 @@ struct mode_def imx219_modes[] = {
 	    .line_time_ns = 18904,      // todo: and this
 	    .timing = { 0, 0, 0, 0, 0 },
 	    .term = { 0, 0 },
-	    .black_level = 66,
+	    .black_level = 66,  // todo: Try modifying this
 	},
 	{
 	    .regs = imx219_mode1,

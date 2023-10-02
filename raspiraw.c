@@ -1472,7 +1472,7 @@ int main(int argc, char **argv)
 	cfg.exposure = -1;
 	cfg.gain = -1;
 	cfg.timeout = 5000;
-	cfg.saverate = 20;
+	cfg.saverasaverate = 20;
 	cfg.bit_depth = -1;
 	cfg.camera_num = -1;
 	cfg.exposure_us = -1;
