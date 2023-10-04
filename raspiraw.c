@@ -1879,7 +1879,7 @@ int main(int argc, char **argv)
 	}
 
 	output->buffer_size = output->buffer_size_recommended;
-	output->buffer_num = output->buffer_num_recommended;
+	//output->buffer_num = output->buffer_num_recommended;
 
 	if (cfg.capture)
 	{
