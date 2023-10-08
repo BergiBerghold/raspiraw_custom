@@ -61,10 +61,6 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #define DEFAULT_I2C_DEVICE 10
 #define ALT_I2C_DEVICE	   0
 
-#define ENCODING MMAL_ENCODING_BAYER_SBGGR10P
-#define UNPACK MMAL_CAMERA_RX_CONFIG_UNPACK_NONE;
-#define PACK MMAL_CAMERA_RX_CONFIG_PACK_NONE;
-
 #define I2C_DEVICE_NAME_LEN 13 // "/dev/i2c-XXX"+NULL
 
 struct brcm_raw_header *brcm_header = NULL;
@@ -1744,10 +1740,12 @@ int main(int argc, char **argv)
 		vcos_log_error("Failed to get cfg");
 		goto component_destroy;
 	}
+	vcos_log_error("Testing");
 	if (sensor_mode->encoding || cfg.bit_depth == sensor_mode->native_bit_depth)
 	{
 		rx_cfg.unpack = MMAL_CAMERA_RX_CONFIG_UNPACK_NONE;
 		rx_cfg.pack = MMAL_CAMERA_RX_CONFIG_PACK_NONE;
+		vcos_log_error("Set to not unpack!");
 	}
 	else
 	{
