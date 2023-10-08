@@ -2075,7 +2075,7 @@ int main(int argc, char **argv)
 	dev.rawcam_pool = pool;
 
 	// ISP input
-	isp->input[0]->buffer_num = 1;
+	//isp->input[0]->buffer_num = 1;
 	vcos_log_error("Create pool of %d buffers of size %d", isp->input[0]->buffer_num, isp->input[0]->buffer_size);
 	dev.isp_ip_pool = mmal_port_pool_create(isp->input[0], isp->input[0]->buffer_num, 0);
 	if (!dev.isp_ip_pool)
