@@ -1879,8 +1879,8 @@ int main(int argc, char **argv)
 	}
 
 	output->buffer_size = output->buffer_size_recommended;
-	//output->buffer_num = output->buffer_num_recommended;
-	output->buffer_num = 4;
+	output->buffer_num = output->buffer_num_recommended;
+	//output->buffer_num = 4;
 
 	if (cfg.capture)
 	{
@@ -2093,7 +2093,7 @@ int main(int argc, char **argv)
 	}
 
 	// Set up YUV/RGB processing outputs
-	yuv_pool = 0; //mmal_port_pool_create(isp->output[0], isp->output[0]->buffer_num, 0);
+	yuv_pool = mmal_port_pool_create(isp->output[0], isp->output[0]->buffer_num, 0);
 	if (!yuv_pool)
 	{
 		vcos_log_error("Failed to create yuv pool");
