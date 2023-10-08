@@ -1740,12 +1740,10 @@ int main(int argc, char **argv)
 		vcos_log_error("Failed to get cfg");
 		goto component_destroy;
 	}
-	vcos_log_error("Testing");
 	if (sensor_mode->encoding || cfg.bit_depth == sensor_mode->native_bit_depth)
 	{
 		rx_cfg.unpack = MMAL_CAMERA_RX_CONFIG_UNPACK_NONE;
 		rx_cfg.pack = MMAL_CAMERA_RX_CONFIG_PACK_NONE;
-		vcos_log_error("Set to not unpack!");
 	}
 	else
 	{
@@ -2077,6 +2075,7 @@ int main(int argc, char **argv)
 	dev.rawcam_pool = pool;
 
 	// ISP input
+	isp->input[0]->buffer_num = 0;
 	vcos_log_error("Create pool of %d buffers of size %d", isp->input[0]->buffer_num, isp->input[0]->buffer_size);
 	dev.isp_ip_pool = mmal_port_pool_create(isp->input[0], isp->input[0]->buffer_num, 0);
 	if (!dev.isp_ip_pool)
