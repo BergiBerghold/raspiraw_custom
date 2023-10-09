@@ -69,8 +69,8 @@ struct sensor_regs imx219_8MPix[] =
     {0x0167, 0xCF},  // X-address of the bottom right corner of the visible pixel data
     {0x0168, 0x00},  // Y-address of the top left corner of the visible pixel data
     {0x0169, 0x00},  // Y-address of the top left corner of the visible pixel data
-    {0x016A, 0x09},  // X-address of the bottom right corner of the visible pixel data
-    {0x016B, 0x9F},  // X-address of the bottom right corner of the visible pixel data
+    {0x016A, 0x09},  // Y-address of the bottom right corner of the visible pixel data
+    {0x016B, 0x9F},  // Y-address of the bottom right corner of the visible pixel data
     {0x016C, 0x0C},  // output image size (X-direction) Width of image data output from the sensor module
     {0x016D, 0xD0},  // output image size (X-direction) Width of image data output from the sensor module
     {0x016E, 0x09},  // output image size (Y-direction) Height of image data output from the sensor module
@@ -576,8 +576,10 @@ struct mode_def imx219_modes[] = {
 	{
 	    .regs = imx219_8MPix,
 	    .num_regs = NUM_ELEMENTS(imx219_8MPix),
-	    .width = 3280,
-	    .height = 2464,
+	    //.width = 3280,
+	    .width = 1640,
+	    //.height = 2464,
+	    .height = 1232,
 	    .encoding = 0,
 	    .order = BAYER_ORDER_BGGR,
 	    .native_bit_depth = 10,
