@@ -1577,24 +1577,24 @@ int main(int argc, char **argv)
 		}
 	}
 
-	if (cfg.crop.hinc >= 0 || cfg.crop.vinc >= 0 || cfg.crop.width > 0 || cfg.crop.width > 0 || cfg.crop.top >= 0 ||
-	    cfg.crop.left >= 0)
-	{
-		if (sensor->set_crop)
-		{
-			if (sensor->set_crop(sensor, sensor_mode, &cfg.crop))
-			{
-				vcos_log_error("Failed setting manual crops. Aborting");
-				//return -1;
-			}
-		}
-		else
-		{
-			vcos_log_error("This sensor does not currently support "
-				       "manual cropping settings. Aborting");
-			//return -1;
-		}
-	}
+//	if (cfg.crop.hinc >= 0 || cfg.crop.vinc >= 0 || cfg.crop.width > 0 || cfg.crop.width > 0 || cfg.crop.top >= 0 ||
+//	    cfg.crop.left >= 0)
+//	{
+//		if (sensor->set_crop)
+//		{
+//			if (sensor->set_crop(sensor, sensor_mode, &cfg.crop))
+//			{
+//				vcos_log_error("Failed setting manual crops. Aborting");
+//				//return -1;
+//			}
+//		}
+//		else
+//		{
+//			vcos_log_error("This sensor does not currently support "
+//				       "manual cropping settings. Aborting");
+//			//return -1;
+//		}
+//	}
 
 	if (cfg.fps > 0)
 	{
