@@ -1865,7 +1865,7 @@ int main(int argc, char **argv)
 		goto component_destroy;
 	}
 
-    if (cfg.crop.height > 0 && cfg.crop.width > 03){
+    if (cfg.crop.height > 0 && cfg.crop.width > 0){
         sensor_mode->height = cfg.crop.height;
         sensor_mode->width = cfg.crop.width;
     }
@@ -1875,9 +1875,7 @@ int main(int argc, char **argv)
 	output->format->es->video.width = VCOS_ALIGN_UP(sensor_mode->width, 16);
 	output->format->es->video.height = VCOS_ALIGN_UP(sensor_mode->height, 16);
 
-	vcos_log_error("Alignment:");
-	vcos_log_error(output->format->es->video.width);
-	vcos_log_error(output->format->es->video.height);
+	vcos_log_error("Buffer width: %u, Buffer height %u", output->format->es->video.width, output->format->es->video.height);
 
 	output->format->encoding = encoding;
 
