@@ -1043,17 +1043,21 @@ static int parse_cmdline(int argc, char **argv, RASPIRAW_PARAMS_T *cfg)
 		case CommandWidth:
 			if (sscanf(argv[i + 1], "%d", &cfg->crop.width) != 1)
 				valid = 0;
-				sensor_mode.width = cfg.crop.width;
 			else
 				i++;
+
+			sensor_mode.width = &cfg->crop.width;
+
 			break;
 
 		case CommandHeight:
 			if (sscanf(argv[i + 1], "%d", &cfg->crop.height) != 1)
 				valid = 0;
-				sensor_mode.height = cfg.crop.height;
 			else
 				i++;
+
+			sensor_mode.height = &cfg->crop.height;
+
 			break;
 
 		case CommandLeft:
