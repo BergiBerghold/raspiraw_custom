@@ -1865,7 +1865,7 @@ int main(int argc, char **argv)
 		goto component_destroy;
 	}
 
-    if (cfg.crop.height > 0 && cfg.crop.width > 0){
+    if (cfg.crop.height > 0 && cfg.crop.width > 03){
         sensor_mode->height = cfg.crop.height;
         sensor_mode->width = cfg.crop.width;
     }
@@ -1874,6 +1874,9 @@ int main(int argc, char **argv)
 	output->format->es->video.crop.height = sensor_mode->height;
 	output->format->es->video.width = VCOS_ALIGN_UP(sensor_mode->width, 16);
 	output->format->es->video.height = VCOS_ALIGN_UP(sensor_mode->height, 16);
+	vcos_log_error("Alignment:");
+	vcos_log_error(VCOS_ALIGN_UP(sensor_mode->width, 16));
+	vcos_log_error(VCOS_ALIGN_UP(sensor_mode->height, 16));
 	output->format->encoding = encoding;
 
 	status = mmal_port_format_commit(output);
