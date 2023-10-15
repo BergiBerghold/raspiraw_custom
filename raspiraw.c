@@ -1865,8 +1865,8 @@ int main(int argc, char **argv)
 		goto component_destroy;
 	}
 
-	sensor_mode->height = &cfg->crop.height;
-	sensor_mode->height = &cfg->crop.height;
+	sensor_mode->height = cfg.crop.height;
+	sensor_mode->height = cfg.crop.height;
 
 	output->format->es->video.crop.width = sensor_mode->width;
 	output->format->es->video.crop.height = sensor_mode->height;
