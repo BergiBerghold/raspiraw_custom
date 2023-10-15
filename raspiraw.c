@@ -1045,9 +1045,6 @@ static int parse_cmdline(int argc, char **argv, RASPIRAW_PARAMS_T *cfg)
 				valid = 0;
 			else
 				i++;
-
-			sensor_mode.width = &cfg->crop.width;
-
 			break;
 
 		case CommandHeight:
@@ -1055,9 +1052,6 @@ static int parse_cmdline(int argc, char **argv, RASPIRAW_PARAMS_T *cfg)
 				valid = 0;
 			else
 				i++;
-
-			sensor_mode.height = &cfg->crop.height;
-
 			break;
 
 		case CommandLeft:
@@ -1870,6 +1864,9 @@ int main(int argc, char **argv)
 		vcos_log_error("Failed to enable render");
 		goto component_destroy;
 	}
+
+	sensor_mode->height = &cfg->crop.height;
+	sensor_mode->height = &cfg->crop.height;
 
 	output->format->es->video.crop.width = sensor_mode->width;
 	output->format->es->video.crop.height = sensor_mode->height;
