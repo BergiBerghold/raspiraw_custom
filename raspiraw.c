@@ -1043,6 +1043,7 @@ static int parse_cmdline(int argc, char **argv, RASPIRAW_PARAMS_T *cfg)
 		case CommandWidth:
 			if (sscanf(argv[i + 1], "%d", &cfg->crop.width) != 1)
 				valid = 0;
+				sensor_mode.width = cfg.crop.width;
 			else
 				i++;
 			break;
@@ -1050,6 +1051,7 @@ static int parse_cmdline(int argc, char **argv, RASPIRAW_PARAMS_T *cfg)
 		case CommandHeight:
 			if (sscanf(argv[i + 1], "%d", &cfg->crop.height) != 1)
 				valid = 0;
+				sensor_mode.height = cfg.crop.height;
 			else
 				i++;
 			break;
@@ -1585,14 +1587,14 @@ int main(int argc, char **argv)
 //			if (sensor->set_crop(sensor, sensor_mode, &cfg.crop))
 //			{
 //				vcos_log_error("Failed setting manual crops. Aborting");
-//				//return -1;
+//				return -1;
 //			}
 //		}
 //		else
 //		{
 //			vcos_log_error("This sensor does not currently support "
 //				       "manual cropping settings. Aborting");
-//			//return -1;
+//			return -1;
 //		}
 //	}
 
