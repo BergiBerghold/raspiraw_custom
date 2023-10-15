@@ -1865,7 +1865,7 @@ int main(int argc, char **argv)
 		goto component_destroy;
 	}
 
-    if (cfg.crop.height && cfg.crop.width){
+    if (cfg.crop.height > 0 && cfg.crop.width > 0){
         sensor_mode->height = cfg.crop.height;
         sensor_mode->width = cfg.crop.width;
     }
