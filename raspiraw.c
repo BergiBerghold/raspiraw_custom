@@ -1866,7 +1866,7 @@ int main(int argc, char **argv)
 	}
 
 	sensor_mode->height = cfg.crop.height;
-	sensor_mode->height = cfg.crop.height;
+	sensor_mode->width = cfg.crop.width;
 
 	output->format->es->video.crop.width = sensor_mode->width;
 	output->format->es->video.crop.height = sensor_mode->height;
