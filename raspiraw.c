@@ -1874,9 +1874,11 @@ int main(int argc, char **argv)
 	output->format->es->video.crop.height = sensor_mode->height;
 	output->format->es->video.width = VCOS_ALIGN_UP(sensor_mode->width, 16);
 	output->format->es->video.height = VCOS_ALIGN_UP(sensor_mode->height, 16);
+
 	vcos_log_error("Alignment:");
-	vcos_log_error(VCOS_ALIGN_UP(sensor_mode->width, 16));
-	vcos_log_error(VCOS_ALIGN_UP(sensor_mode->height, 16));
+	vcos_log_error(output->format->es->video.width);
+	vcos_log_error(output->format->es->video.height);
+
 	output->format->encoding = encoding;
 
 	status = mmal_port_format_commit(output);
