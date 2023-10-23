@@ -1875,7 +1875,7 @@ int main(int argc, char **argv)
 	output->format->es->video.width = VCOS_ALIGN_UP(sensor_mode->width, 16);
 	output->format->es->video.height = VCOS_ALIGN_UP(sensor_mode->height, 16);
 
-	vcos_log_error("Buffer width: %u, Buffer height %u", output->format->es->video.width, output->format->es->video.height);
+	vcos_log_error("Output width: %u, Output height %u", output->format->es->video.width, output->format->es->video.height);
 
 	output->format->encoding = encoding;
 
