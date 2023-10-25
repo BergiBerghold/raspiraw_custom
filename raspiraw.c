@@ -1979,7 +1979,8 @@ int main(int argc, char **argv)
 		goto pool_destroy;
 	}
 
-	port->buffer_num = output->buffer_num;
+	// port->buffer_num = output->buffer_num;
+	port->buffer_num = 2;
 
 	if (port->buffer_size != output->buffer_size)
 	{
