@@ -2369,6 +2369,7 @@ void modRegBit(struct mode_def *mode, uint16_t reg, int bit, int value, enum ope
 
 void modReg(struct mode_def *mode, uint16_t reg, int startBit, int endBit, int value, enum operation op)
 {
+    vcos_log_error("Reg: %04X set to %04X\n", reg, value);
 	int i;
 	for (i = startBit; i <= endBit; i++)
 	{
