@@ -1888,7 +1888,7 @@ int main(int argc, char **argv)
 
 	output->buffer_size = output->buffer_size_recommended;
 	output->buffer_num = output->buffer_num_recommended;
-	output->buffer_num = 14; //default 6
+	output->buffer_num = 18; //default 6
 
 	if (cfg.capture)
 	{
@@ -2001,7 +2001,7 @@ int main(int argc, char **argv)
 	port->format->es->video.width = VCOS_ALIGN_UP(port->format->es->video.crop.width, 32);
 	port->format->es->video.height = VCOS_ALIGN_UP(port->format->es->video.crop.height, 16);
 	port->format->encoding = MMAL_ENCODING_I420;
-	port->buffer_num = 14; // Go for 6 output buffers to give some slack
+	port->buffer_num = 0; // Go for 6 output buffers to give some slack
 	status = mmal_port_format_commit(port);
 	if (status != MMAL_SUCCESS)
 	{
