@@ -801,18 +801,18 @@ struct sensor_def hawkeye = {
 	.i2c_ident_reg = 0x005E,
 	.i2c_ident_value = 0x3641,
 
-	.vflip_reg = 0x172,
-	.vflip_reg_bit = 1,
-	.hflip_reg = 0x172,
-	.hflip_reg_bit = 0,
+//	.vflip_reg = 0x172,
+//	.vflip_reg_bit = 1,
+//	.hflip_reg = 0x172,
+//	.hflip_reg_bit = 0,
 
-	.exposure_reg = 0x015A,
+	.exposure_reg = 0x0202,
 	.exposure_reg_num_bits = 16,
 
-	.vts_reg = 0x0160,
-	.vts_reg_num_bits = 16,
+//	.vts_reg = 0x0160,
+//	.vts_reg_num_bits = 16,
 
-	.gain_reg = 0x0157,
+	.gain_reg = 0x0204,
 	.gain_reg_num_bits = 8, // Only valid up to 230.
 };
 

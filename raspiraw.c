@@ -393,7 +393,7 @@ const struct sensor_def *probe_sensor(int fd)
 			if (!i2c_rd(fd, sensor->i2c_addr, sensor->i2c_ident_reg, (uint8_t *)&reg,
 				    sensor->i2c_ident_length, sensor))
 			{
-				vcos_log_error("Value is %02X", reg);
+				// vcos_log_error("Value is %02X", reg);
 				if (reg == sensor->i2c_ident_value)
 				{
 					vcos_log_error("Found sensor %s at address %02X", sensor->name,
@@ -1890,7 +1890,7 @@ int main(int argc, char **argv)
 
 	output->buffer_size = output->buffer_size_recommended;
 	output->buffer_num = output->buffer_num_recommended;
-	output->buffer_num = 18; //default 6
+	output->buffer_num = 2; //default 6
 
 	if (cfg.capture)
 	{
