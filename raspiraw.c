@@ -168,6 +168,7 @@ void modReg(struct mode_def *mode, uint16_t reg, int startBit, int endBit, int v
 
 #include "adv7282m_modes.h"
 #include "imx219_modes.h"
+#include "hawkeye_modes.h"
 #include "imx477_modes.h"
 #include "ov5647_modes.h"
 
