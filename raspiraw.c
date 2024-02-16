@@ -393,6 +393,7 @@ const struct sensor_def *probe_sensor(int fd)
 			if (!i2c_rd(fd, sensor->i2c_addr, sensor->i2c_ident_reg, (uint8_t *)&reg,
 				    sensor->i2c_ident_length, sensor))
 			{
+				vcos_log_error("Value is %02X", reg);
 				if (reg == sensor->i2c_ident_value)
 				{
 					vcos_log_error("Found sensor %s at address %02X", sensor->name,
