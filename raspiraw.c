@@ -455,7 +455,13 @@ void send_regs(int fd, const struct sensor_def *sensor, const struct sensor_regs
 					msg[3] = regs[i].data;
 					len = 4;
 				}
-				if (write(fd, msg, len) != len)
+
+				int return_val = write(fd, msg, len);
+
+				vcos_log_error("Trying to write: %02X %02X %02X %02X. Return len is %i", msg[0], msg[1], msg[2], msg[3], return_val);
+
+				//if (write(fd, msg, len) != len)
+				if (return_val != len)
 				{
 					vcos_log_error("Failed to write register index %d", i);
 				}
