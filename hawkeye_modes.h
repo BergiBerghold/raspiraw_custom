@@ -795,7 +795,7 @@ struct sensor_def hawkeye = {
 	.stop = hawkeye_stop,
 	.num_stop_regs = NUM_ELEMENTS(hawkeye_stop),
 
-	.i2c_addr = 0x50,
+	.i2c_addr = 0x58,
 	.i2c_addressing = 2,
 	.i2c_ident_length = 2,
 	.i2c_ident_reg = 0x005E,
