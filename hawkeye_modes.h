@@ -799,7 +799,7 @@ struct sensor_def hawkeye = {
 	.i2c_addressing = 2,
 	.i2c_ident_length = 2,
 	.i2c_ident_reg = 0x005E,
-	.i2c_ident_value = 0x4136,
+	.i2c_ident_value = 0x3641,
 
 	.vflip_reg = 0x172,
 	.vflip_reg_bit = 1,
