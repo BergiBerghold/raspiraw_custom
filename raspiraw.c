@@ -1890,7 +1890,7 @@ int main(int argc, char **argv)
 
 	output->buffer_size = output->buffer_size_recommended;
 	output->buffer_num = output->buffer_num_recommended;
-	output->buffer_num = 2; //default 6
+	output->buffer_num = 4; //default 6
 
 	if (cfg.capture)
 	{
