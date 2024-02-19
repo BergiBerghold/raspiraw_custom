@@ -393,7 +393,7 @@ const struct sensor_def *probe_sensor(int fd)
 			if (!i2c_rd(fd, sensor->i2c_addr, sensor->i2c_ident_reg, (uint8_t *)&reg,
 				    sensor->i2c_ident_length, sensor))
 			{
-				// vcos_log_error("Value is %02X", reg);
+				vcos_log_error("Value is %02X", reg);
 				if (reg == sensor->i2c_ident_value)
 				{
 					vcos_log_error("Found sensor %s at address %02X", sensor->name,
@@ -456,19 +456,39 @@ void send_regs(int fd, const struct sensor_def *sensor, const struct sensor_regs
 					len = 4;
 				}
 
-				int return_val = -1;
+				int success = 0;
 
-				while (return_val != len)
-				{
-					return_val = write(fd, msg, len);
-					vcos_log_error("Trying to write: %02X %02X %02X %02X. Return len is %i", msg[0], msg[1], msg[2], msg[3], return_val);
+				for (int k=0x50; k<0x58; k++){
+					if (ioctl(fd, I2C_SLAVE_FORCE, k) < 0)
+					{
+						vcos_log_error("Failed to set I2C address to %02X", k);
+					}
+
+					int return_val = write(fd, msg, len);
+
+					usleep(10000);
+
+					if (return_val == len){
+						success = k;
+						break;
+					}
 				}
 
-				vcos_log_error("");
+				if (success) vcos_log_error("Success writing to: %02X %02X %02X %02X on %02X", msg[0], msg[1], msg[2], msg[3], success);
+				else vcos_log_error("Fail writing to: %02X %02X %02X %02X", msg[0], msg[1], msg[2], msg[3]);
 
-//				if (write(fd, msg, len) != len)
+//				int return_val = write(fd, msg, len);
+//
+//				usleep(10000);
+//
+//				if (return_val == len){
+//					vcos_log_error("Success writing to: %02X %02X %02X %02X. Return len is %i", msg[0], msg[1], msg[2], msg[3], return_val);
+//				}
+//
+//				if (return_val != len)
 //				{
-//					vcos_log_error("Failed to write register index %d", i);
+//					vcos_log_error("Fail writing to: %02X %02X %02X %02X. Return len is %i", msg[0], msg[1], msg[2], msg[3], return_val);
+//					//exit(0);
 //				}
 			}
 		}
