@@ -105,8 +105,6 @@ struct sensor_regs imx219_8MPix[] =
     {0x4797, 0x0E},  // CIS Tuning ?
     {0x479B, 0x0E},  // CIS Tuning ?
     {0x0100, 0x01},  // Mode Select: Streaming
-    {0x0600, 0x00},
-    {0x0601, 0x02},
 };
 
 // Register setting provided on
