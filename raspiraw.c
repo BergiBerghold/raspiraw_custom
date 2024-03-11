@@ -458,7 +458,7 @@ void send_regs(int fd, const struct sensor_def *sensor, const struct sensor_regs
 
 				int success = 0;
 
-				for (int k=0x50; k<0x58; k++){
+				for (int k=0x10; k<0x11; k++){
 					if (ioctl(fd, I2C_SLAVE_FORCE, k) < 0)
 					{
 						vcos_log_error("Failed to set I2C address to %02X", k);
