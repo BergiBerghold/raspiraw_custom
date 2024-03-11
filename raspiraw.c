@@ -468,10 +468,10 @@ void send_regs(int fd, const struct sensor_def *sensor, const struct sensor_regs
 
 					int return_val = write(fd, msg, len);
 
-					char read_return[0x0114 + 0xFF];
+					char read_return[0x0114];
 					read(fd, read_return, 1);
 
-					vcos_log_error("Read from %02X %02X value %09X", msg[0], msg[1], read_return);
+					vcos_log_error("Read from %02X %02X value %X", msg[0], msg[1], read_return);
 
 					usleep(10000);
 
