@@ -481,7 +481,7 @@ void send_regs(int fd, const struct sensor_def *sensor, const struct sensor_regs
 
 				uint16_t return_value = 0;
 
-				if (!i2c_rd(fd, 0x10, regs[i].reg, (uint8_t *)&return_value, 2, sensor))
+				if (!i2c_rd(fd, 0x10, regs[i].reg, (uint8_t *)&return_value, 1, sensor))
 				{
 					vcos_log_error("Read value is %02X from %04X \t %s \n", return_value, regs[i].reg, return_value == msg[2] ? "true" : "false");
 				}
