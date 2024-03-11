@@ -479,11 +479,11 @@ void send_regs(int fd, const struct sensor_def *sensor, const struct sensor_regs
 				if (success) vcos_log_error("Success writing to: %02X %02X %02X %02X on %02X", msg[0], msg[1], msg[2], msg[3], success);
 				else vcos_log_error("Fail writing to: %02X %02X %02X %02X", msg[0], msg[1], msg[2], msg[3]);
 
-				uint16_t reg = 0;
+				uint16_t return_value = 0;
 
-				if (!i2c_rd(fd, 0x10, 0x0114, (uint8_t *)&reg, 2, sensor))
+				if (!i2c_rd(fd, 0x10, regs[i].data, (uint8_t *)&return_value, 2, sensor))
 				{
-					vcos_log_error("Read value is %X", reg);
+					vcos_log_error("Read value is %02X from %04X", return_value, regs[i].data);
 				}
 
 //				int return_val = write(fd, msg, len);
