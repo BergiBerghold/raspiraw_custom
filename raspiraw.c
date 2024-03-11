@@ -476,8 +476,8 @@ void send_regs(int fd, const struct sensor_def *sensor, const struct sensor_regs
 					}
 				}
 
-				if (success) vcos_log_error("Success writing to: %02X %02X %02X %02X on %02X", msg[0], msg[1], msg[2], msg[3], success);
-				else vcos_log_error("Fail writing to: %02X %02X %02X %02X", msg[0], msg[1], msg[2], msg[3]);
+				if (success) vcos_log_error("Success writing to: %02X%02X %02X on %02X", msg[0], msg[1], msg[2], success);
+				else vcos_log_error("Fail writing to: %02X%02X %02X", msg[0], msg[1], msg[2]);
 
 				uint16_t return_value = 0;
 
