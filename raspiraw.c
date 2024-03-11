@@ -36,6 +36,8 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <stdlib.h>
 #include <string.h>
 
+#include <unistd.h>
+
 #include <linux/i2c-dev.h>
 #include <linux/i2c.h>
 #define I2C_SLAVE_FORCE 0x0706
@@ -465,6 +467,11 @@ void send_regs(int fd, const struct sensor_def *sensor, const struct sensor_regs
 					}
 
 					int return_val = write(fd, msg, len);
+
+					unsigned char read_return;
+					int amk = read(fd, read_return, 1);
+
+					vcos_log_error("Read from %02X %02X value %02X", msg[0], msg[1], read_return);
 
 					usleep(10000);
 
