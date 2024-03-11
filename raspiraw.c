@@ -486,18 +486,6 @@ void send_regs(int fd, const struct sensor_def *sensor, const struct sensor_regs
 					vcos_log_error("Read value is %X", reg);
 				}
 
-
-
-				uint16_t reg = 0;
-				sensor = *sensor_list;
-				vcos_log_error("Probing sensor %s on addr %02X", sensor->name, sensor->i2c_addr);
-				if (sensor->i2c_ident_length <= 2)
-				{
-					if (!i2c_rd(fd, sensor->i2c_addr, sensor->i2c_ident_reg, (uint8_t *)&reg,
-						    sensor->i2c_ident_length, sensor))
-					{
-						vcos_log_error("Value is %02X", reg);
-
 //				int return_val = write(fd, msg, len);
 //
 //				usleep(10000);
