@@ -468,13 +468,6 @@ void send_regs(int fd, const struct sensor_def *sensor, const struct sensor_regs
 
 					int return_val = write(fd, msg, len);
 
-					lseek(fd, 0x0114, SEEK_SET);
-
-					char read_return[1];
-					read(fd, read_return, 1);
-
-					vcos_log_error("Read from %02X %02X value %X", msg[0], msg[1], read_return);
-
 					usleep(10000);
 
 					if (return_val == len){
@@ -485,6 +478,25 @@ void send_regs(int fd, const struct sensor_def *sensor, const struct sensor_regs
 
 				if (success) vcos_log_error("Success writing to: %02X %02X %02X %02X on %02X", msg[0], msg[1], msg[2], msg[3], success);
 				else vcos_log_error("Fail writing to: %02X %02X %02X %02X", msg[0], msg[1], msg[2], msg[3]);
+
+				uint16_t reg = 0;
+
+				if (!i2c_rd(fd, sensor->i2c_addr, regs[i].data, (uint8_t *)&reg, 2, sensor))
+				{
+					vcos_log_error("Read value is %X", reg);
+				}
+
+
+
+				uint16_t reg = 0;
+				sensor = *sensor_list;
+				vcos_log_error("Probing sensor %s on addr %02X", sensor->name, sensor->i2c_addr);
+				if (sensor->i2c_ident_length <= 2)
+				{
+					if (!i2c_rd(fd, sensor->i2c_addr, sensor->i2c_ident_reg, (uint8_t *)&reg,
+						    sensor->i2c_ident_length, sensor))
+					{
+						vcos_log_error("Value is %02X", reg);
 
 //				int return_val = write(fd, msg, len);
 //
