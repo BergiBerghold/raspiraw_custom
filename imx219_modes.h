@@ -80,8 +80,8 @@ struct sensor_regs imx219_8MPix[] =
     {0x0172, 0x03},  // Image_orientation
     {0x0174, 0x00},  // Binning Mode H_A
     {0x0175, 0x00},  // Binning Mode V_A
-    {0x018C, 0x0A},  // CSI Data Format [15:8]
-    {0x018D, 0x0A},  // CSI Data Format [7:0]
+    {0x018C, 0x08},  // CSI Data Format [15:8]
+    {0x018D, 0x08},  // CSI Data Format [7:0]
     {0x0301, 0x05},  // VTPXCK_DIV
     {0x0303, 0x01},  // VTSYCK_DIV
     {0x0304, 0x03},  // PREPLLCK_VT_DIV [3:0]
